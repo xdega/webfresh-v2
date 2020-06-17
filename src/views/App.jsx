@@ -1,28 +1,26 @@
 import React from "react";
+import { useRoutes } from "react-router-dom";
 import Header from "../components/Header";
 import Article from "../components/Article";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const App = () => {
-  const article = [
-    "Welcome to this simple starter template for React + TailwindCSS.",
-    `This template comprises of a minimal React setup (no redux, no cra cli) 
-    to serve as a starting point for a diverse array of projects`,
-    `Tooling includes Tailwind CSS library and Webpack for processing a 
-    Distribution that strips out all unused CSS.`,
-  ];
+const routes = [
+  { path: "/blog", content: <Article title="Blog" /> },
+  { path: "/portfolio", content: <Article title="Portfolio" /> },
+  { path: "/resume", content: <Article title="Resume" /> },
+  { path: "/contact", content: <Article title="Contact" /> },
+];
 
-  const links = ["blog", "portfolio", "resume", "contact"];
+export default function App() {
+  const content = useRoutes(routes);
 
   return (
     <div className="p-5 flex flex-col min-h-screen">
       <Header title="Webfresh" tagline="Web Development" />
       <Navbar links={links} />
-      <Article content={article} />
+      {content}
       <Footer content="Made with &hearts; by Liam Hockley" />
     </div>
   );
-};
-
-export default App;
+}
