@@ -1,6 +1,30 @@
 /* purgecss start ignore */
-@import  "tailwindcss/base";
-@import  "tailwindcss/components";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 /* purgecss end ignore */
 
 @import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap');
+
+// Custom CSS
+.font-header {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 900;
+}
+
+.--collapse {
+  transition: all 500ms;
+}
+
+.--fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

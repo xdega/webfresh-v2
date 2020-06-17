@@ -58,8 +58,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "style.css",
     }),
-    new PurgecssPlugin({
-      paths: glob.sync(path.join(__dirname, "src", "**/*"), { nodir: true }),
-    }),
+    //new PurgecssPlugin({
+    //  paths: glob.sync(path.join(__dirname, "src", "**/*"), { nodir: true }),
+    //}),
   ],
 };

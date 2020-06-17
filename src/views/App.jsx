@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <div className="p-5 flex flex-col min-h-screen">
-      <Header content="Webfresh" />
+      <Header title="Webfresh" tagline="Web Development" />
       <Nav content="nav links" />
       <Article content={article} />
       <Footer content="Made with &hearts; by Liam Hockley" />
