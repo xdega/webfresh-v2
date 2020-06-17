@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Article from "../components/Article";
-import Nav from "../components/Nav";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const App = () => {
@@ -13,10 +13,12 @@ const App = () => {
     Distribution that strips out all unused CSS.`,
   ];
 
+  const links = ["blog", "portfolio", "resume", "contact"];
+
   return (
     <div className="p-5 flex flex-col min-h-screen">
       <Header title="Webfresh" tagline="Web Development" />
-      <Nav content="nav links" />
+      <Navbar links={links} />
       <Article content={article} />
       <Footer content="Made with &hearts; by Liam Hockley" />
     </div>
