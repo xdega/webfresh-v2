@@ -10,6 +10,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(process.cwd(), "dist"),
+    publicPath: "/",
   },
   resolve: {
     extensions: [".jsx", ".js"],
@@ -46,6 +47,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.ProgressPlugin(),
