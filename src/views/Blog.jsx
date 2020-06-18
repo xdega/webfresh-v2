@@ -4,11 +4,18 @@ import api from "../api/article";
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    api.index().then((resp) => {
-      setArticles(resp.data.data);
-    });
+    setLoading(true);
+    api
+      .index()
+      .then((resp) => {
+        setArticles(resp.data.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const blogItems = articles.map((item) => {
@@ -16,13 +23,16 @@ const Blog = () => {
     const body = item.attributes.body.value;
     return <BlogItem title={title} body={body} key={item.id} />;
   });
-
-  return (
-    <div className="flex-grow">
-      <h2>Blog</h2>
-      {blogItems}
-    </div>
-  );
+  if (loading) {
+    return <div className="flex-grow w-50">LOADING...</div>;
+  } else {
+    return (
+      <div className="flex-grow --fade-in">
+        <h2>Blog</h2>
+        {blogItems}
+      </div>
+    );
+  }
 };
 
 const BlogItem = ({ title, body }) => {
