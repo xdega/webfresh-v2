@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useResolvedLocation } from "react-router-dom";
 
-const navItemCss = [
+const baseNavClasses = [
   "whitespace-no-wrap",
-  "bg-light-lime",
   "transition-colors",
   "duration-500",
   "ease-in-out",
@@ -15,6 +14,16 @@ const navItemCss = [
   "w-auto",
   "mr-1",
   "cursor-pointer",
+];
+
+const navTextCss = [
+  "hidden",
+  "sm:inline-block",
+  "uppercase",
+  "border-l-2",
+  "ml-1",
+  "pl-2",
+  "border-white",
 ];
 
 const Navbar = () => {
@@ -46,13 +55,18 @@ const Navbar = () => {
 };
 
 const InternalNavItem = ({ to, iconString, name }) => {
+  const location = useLocation();
+  const resolvedLocation = useResolvedLocation(to);
+  const backgroundClass =
+    location.pathname === resolvedLocation.pathname
+      ? "bg-dark-lime"
+      : "bg-light-lime";
+
   return (
-    <li className={navItemCss.join(" ")}>
+    <li className={`${baseNavClasses.join(" ")} ${backgroundClass}`}>
       <Link to={to}>
         <i className={`${iconString} fa-lg`}></i>
-        <span className="hidden sm:inline-block uppercase border-l-2 ml-1 pl-2 border-white ">
-          {name}
-        </span>
+        <span className={navTextCss.join(" ")}>{name}</span>
       </Link>
     </li>
   );
@@ -60,12 +74,10 @@ const InternalNavItem = ({ to, iconString, name }) => {
 
 const ExternalNavItem = ({ path, iconString, name }) => {
   return (
-    <li className={navItemCss.join(" ")}>
+    <li className={`${baseNavClasses.join(" ")} bg-light-lime`}>
       <a href={path} target="_blank">
         <i className={`${iconString} fa-lg`}></i>
-        <span className="hidden sm:inline-block uppercase border-l-2 ml-1 pl-2 border-white">
-          {name}
-        </span>
+        <span className={navTextCss.join(" ")}>{name}</span>
       </a>
     </li>
   );
