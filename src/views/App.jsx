@@ -21,7 +21,7 @@ export default function App() {
   const element = useRoutes(routes);
 
   return (
-    <div className="p-5 flex flex-col min-h-screen">
+    <div className="p-2 flex flex-col min-h-screen">
       <Header title="Webfresh" tagline="Web Development" />
       <Navbar />
       {element}
