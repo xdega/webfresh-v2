@@ -1,15 +1,20 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 import Header from "../components/Header";
-import Article from "../components/Article";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+// Views
+import Blog from "./Blog";
+import Portfolio from "./Portfolio";
+import Resume from "./Resume";
+import Contact from "./Contact";
+
 const routes = [
-  { path: "/blog", element: <Article title="Blog" /> },
-  { path: "/portfolio", element: <Article title="Portfolio" /> },
-  { path: "/resume", element: <Article title="Resume" /> },
-  { path: "/contact", element: <Article title="Contact" /> },
+  { path: "/blog", element: <Blog /> },
+  { path: "/portfolio", element: <Portfolio /> },
+  { path: "/resume", element: <Resume /> },
+  { path: "/contact", element: <Contact /> },
 ];
 
 export default function App() {
