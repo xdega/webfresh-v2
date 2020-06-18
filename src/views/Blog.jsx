@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import parse from "html-react-parser";
 import api from "../api/article";
 
 const Blog = () => {
@@ -28,7 +29,7 @@ const BlogItem = ({ title, body }) => {
   return (
     <article>
       <h2>{title}</h2>
-      <div>{body}</div>
+      <div>{parse(body)}</div>
     </article>
   );
 };
