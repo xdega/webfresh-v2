@@ -6,20 +6,20 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const routes = [
-  { path: "/blog", content: <Article title="Blog" /> },
-  { path: "/portfolio", content: <Article title="Portfolio" /> },
-  { path: "/resume", content: <Article title="Resume" /> },
-  { path: "/contact", content: <Article title="Contact" /> },
+  { path: "/blog", element: <Article title="Blog" /> },
+  { path: "/portfolio", element: <Article title="Portfolio" /> },
+  { path: "/resume", element: <Article title="Resume" /> },
+  { path: "/contact", element: <Article title="Contact" /> },
 ];
 
 export default function App() {
-  const content = useRoutes(routes);
+  const element = useRoutes(routes);
 
   return (
     <div className="p-5 flex flex-col min-h-screen">
       <Header title="Webfresh" tagline="Web Development" />
-      <Navbar links={links} />
-      {content}
+      <Navbar />
+      {element}
       <Footer content="Made with &hearts; by Liam Hockley" />
     </div>
   );

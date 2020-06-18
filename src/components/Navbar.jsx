@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const navItemCss = [
   "whitespace-no-wrap",
@@ -17,7 +17,7 @@ const navItemCss = [
   "cursor-pointer",
 ];
 
-const Navbar = ({ links }) => {
+const Navbar = () => {
   return (
     <nav className="--fade-in">
       <ul className="flex mt-1">
