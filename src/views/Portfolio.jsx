@@ -3,7 +3,6 @@ import parse from "html-react-parser";
 import api from "../api/portfolio";
 import Loader from "../components/Loader";
 
-// Component Logic
 const Portfolio = () => {
   const [items, setItems] = useState([]);
   const [included, setIncluded] = useState([]);
@@ -22,20 +21,18 @@ const Portfolio = () => {
       });
   }, []);
 
-  let i = 0;
   const PortfolioItems = items.map((item) => {
-    const thumbId = item.relationships.field_thumbnail.data.id;
-    let thumbAttributes = included.filter((item) => {
-      return item.id == thumbId;
+    const thumbnailId = item.relationships.field_thumbnail.data.id;
+    let thumbnailUrl = "";
+
+    const thumbAttributes = included.filter((item) => {
+      return item.id == thumbnailId;
     });
-    let thumbUrl = "";
-    if (
-      typeof thumbAttributes[0] !== "undefined" ||
-      thumbAttributes[0] === null
-    ) {
+
+    if (typeof thumbAttributes[0] !== "undefined") {
       const baseUrl = "https://api.webfresh.dev";
       const thumbPath = thumbAttributes[0].attributes.uri.url;
-      thumbUrl = `${baseUrl}${thumbPath}`;
+      thumbnailUrl = `${baseUrl}${thumbPath}`;
     }
 
     const props = {
@@ -43,7 +40,7 @@ const Portfolio = () => {
       summary: item.attributes.body.summary,
       body: item.attributes.body.processed,
       projectUrl: item.attributes.field_project_url.uri,
-      thumbnail: thumbUrl,
+      thumbnail: thumbnailUrl,
     };
 
     return <PortfolioItem {...props} key={item.id} />;
