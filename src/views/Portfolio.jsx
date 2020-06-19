@@ -29,7 +29,6 @@ const Portfolio = () => {
       return item.id == thumbId;
     });
     let thumbUrl = "";
-
     if (
       typeof thumbAttributes[0] !== "undefined" ||
       thumbAttributes[0] === null
@@ -43,6 +42,7 @@ const Portfolio = () => {
       title: item.attributes.title,
       summary: item.attributes.body.summary,
       body: item.attributes.body.processed,
+      projectUrl: item.attributes.field_project_url.uri,
       thumbnail: thumbUrl,
     };
 
@@ -65,7 +65,7 @@ const Portfolio = () => {
 const PortfolioItem = (props) => {
   return (
     <article className="flex mt-2">
-      <a href="#projectURL" className="flex-shrink-0">
+      <a href={props.projectUrl} className="flex-shrink-0" target="_blank">
         <img
           className="sm:hidden"
           src={props.thumbnail}
