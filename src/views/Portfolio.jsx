@@ -43,6 +43,12 @@ const Portfolio = () => {
       thumbnail: thumbnailUrl,
     };
 
+    const techIcons = item.attributes.field_tech_icons.map((item) => {
+      return <Icon iconString={item} />;
+    });
+
+    props.techIcons = techIcons;
+
     return <PortfolioItem {...props} key={item.id} />;
   });
   if (loading) {
@@ -81,9 +87,7 @@ const PortfolioItem = (props) => {
       <div className="flex-auto ml-1 px-0">
         <div className="uppercase text-white bg-dark-gray p-1 flex justify-between px-2">
           <span className="font-bold">{props.title}</span>
-          <span>
-            <Icon iconString="fab fa-wordpress" />
-          </span>
+          <span>{props.techIcons}</span>
         </div>
         <div className="flex justify-between flex-col px-2">
           <div className="leading-tight mt-1">{props.summary}</div>
@@ -98,7 +102,7 @@ const PortfolioItem = (props) => {
 
 // To be factored out into /components
 const Icon = ({ iconString }) => {
-  return <i className={`${iconString} self-center`}></i>;
+  return <i className={`${iconString} self-center ml-2`}></i>;
 };
 
 export default Portfolio;
