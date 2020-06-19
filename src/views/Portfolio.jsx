@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import api from "../api/article";
+import parse from "html-react-parser";
+import api from "../api/portfolio";
 import Loader from "../components/Loader";
 
 // Component Logic
 const Portfolio = () => {
   const [items, setItems] = useState([]);
+  const [included, setIncluded] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -13,6 +15,7 @@ const Portfolio = () => {
       .index()
       .then((resp) => {
         setItems(resp.data.data);
+        setIncluded(resp.data.included);
       })
       .finally(() => {
         setLoading(false);
@@ -21,8 +24,29 @@ const Portfolio = () => {
 
   let i = 0;
   const PortfolioItems = items.map((item) => {
-    i++;
-    return <PortfolioItem key={i} />;
+    const thumbId = item.relationships.field_large_screenshot.data.id;
+    let thumbAttributes = included.filter((item) => {
+      return item.id == thumbId;
+    });
+    let thumbUrl = "";
+
+    if (
+      typeof thumbAttributes[0] !== "undefined" ||
+      thumbAttributes[0] === null
+    ) {
+      const baseUrl = "https://api.webfresh.dev";
+      const thumbPath = thumbAttributes[0].attributes.uri.url;
+      thumbUrl = `${baseUrl}${thumbPath}`;
+    }
+
+    const props = {
+      title: item.attributes.title,
+      summary: item.attributes.body.summary,
+      body: item.attributes.body.processed,
+      thumbnail: thumbUrl,
+    };
+
+    return <PortfolioItem {...props} key={item.id} />;
   });
   if (loading) {
     return <Loader />;
@@ -38,34 +62,36 @@ const Portfolio = () => {
   }
 };
 
-const PortfolioItem = ({}) => {
+const PortfolioItem = (props) => {
   return (
     <article className="flex mt-2">
-      <a href="#" className="flex-shrink-0">
+      <a href="#projectURL" className="flex-shrink-0">
         <img
           className="sm:hidden"
-          src="https://via.placeholder.com/75"
+          src={props.thumbnail}
           alt="Portfolio Screenshot"
+          width="75"
+          height="75"
         />
         <img
           className="hidden sm:inline-block"
-          src="https://via.placeholder.com/150"
+          src={props.thumbnail}
           alt="Portfolio Screenshot"
+          width="150"
+          height="150"
         />
       </a>
       <div className="flex-auto ml-1 px-0">
         <div className="uppercase text-white bg-dark-gray p-1 flex justify-between px-2">
-          <span className="font-bold">Palm Business Center</span>
+          <span className="font-bold">{props.title}</span>
           <span>
             <i className="fab fa-wordpress self-center"></i>
           </span>
         </div>
         <div className="flex justify-between flex-col px-2">
-          <div className="leading-tight mt-1">
-            Website redesign, using Wordpress, modern CSS/JS, and Twig.
-          </div>
+          <div className="leading-tight mt-1">{props.summary}</div>
           <div className="hidden sm:flex overflow-hidden mt-2">
-            <p className="leading-tight">Expanded Description</p>
+            <span className="leading-tight">{parse(props.body)}</span>
           </div>
         </div>
       </div>
