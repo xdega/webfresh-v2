@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import parse from "html-react-parser";
 import api from "../api/article";
+import Loader from "../components/Loader";
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
@@ -28,11 +29,7 @@ const Blog = () => {
     return <BlogItem title={title} body={body} date={date} key={item.id} />;
   });
   if (loading) {
-    return (
-      <div className="flex-grow">
-        <div className="loader mt-3"></div>
-      </div>
-    );
+    return <Loader />;
   } else {
     return (
       <main className="flex-grow mt-2 --fade-in">
