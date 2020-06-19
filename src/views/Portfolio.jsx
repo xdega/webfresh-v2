@@ -24,7 +24,7 @@ const Portfolio = () => {
 
   let i = 0;
   const PortfolioItems = items.map((item) => {
-    const thumbId = item.relationships.field_large_screenshot.data.id;
+    const thumbId = item.relationships.field_thumbnail.data.id;
     let thumbAttributes = included.filter((item) => {
       return item.id == thumbId;
     });
