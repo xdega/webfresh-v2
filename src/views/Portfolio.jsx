@@ -82,7 +82,7 @@ const PortfolioItem = (props) => {
         <div className="uppercase text-white bg-dark-gray p-1 flex justify-between px-2">
           <span className="font-bold">{props.title}</span>
           <span>
-            <i className="fab fa-wordpress self-center"></i>
+            <Icon iconString="fab fa-wordpress" />
           </span>
         </div>
         <div className="flex justify-between flex-col px-2">
@@ -94,6 +94,11 @@ const PortfolioItem = (props) => {
       </div>
     </article>
   );
+};
+
+// To be factored out into /components
+const Icon = ({ iconString }) => {
+  return <i className={`${iconString} self-center`}></i>;
 };
 
 export default Portfolio;
