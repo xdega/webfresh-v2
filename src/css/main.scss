@@ -12,15 +12,6 @@
   font-weight: 900;
 }
 
-.content {
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
-}
-
-.--collapse {
-  transition: all 500ms;
-}
-
 .--fade-in {
   animation: fade-in 1s ease-in-out;
 }

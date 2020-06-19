@@ -64,7 +64,7 @@ const PortfolioItem = ({}) => {
           <div className="leading-tight mt-1">
             Website redesign, using Wordpress, modern CSS/JS, and Twig.
           </div>
-          <div className="content sm:max-h-full overflow-hidden mt-2">
+          <div className="hidden sm:flex overflow-hidden mt-2">
             <p className="leading-tight">Expanded Description</p>
           </div>
         </div>
