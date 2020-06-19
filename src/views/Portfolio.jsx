@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import parse from "html-react-parser";
 import api from "../api/article";
 import Loader from "../components/Loader";
 
+// Component Logic
 const Portfolio = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -53,25 +53,19 @@ const PortfolioItem = ({}) => {
           alt="Portfolio Screenshot"
         />
       </a>
-      <div className="flex-auto ml-1">
-        <div className="uppercase text-white bg-dark-gray p-1 px-2 flex justify-between">
+      <div className="flex-auto ml-1 px-0">
+        <div className="uppercase text-white bg-dark-gray p-1 flex justify-between px-2">
           <span className="font-bold">Palm Business Center</span>
           <span>
             <i className="fab fa-wordpress self-center"></i>
           </span>
         </div>
-        <div className="flex justify-between flex-col">
-          <div className="leading-tight px-2 mt-1">
+        <div className="flex justify-between flex-col px-2">
+          <div className="leading-tight mt-1">
             Website redesign, using Wordpress, modern CSS/JS, and Twig.
           </div>
-          <div>
-            <div className="sm:hidden">
-              <i className="fas fa-angle-down text-light-lime --collapse"></i>
-            </div>
-            <div className="content sm:max-h-full overflow-hidden">
-              <h3 className="hidden sm:block  font-bold p-2 uppercase">Details</h3>
-              <p className="leading-tight px-2">Expanded Description</p>
-            </div>
+          <div className="content sm:max-h-full overflow-hidden mt-2">
+            <p className="leading-tight">Expanded Description</p>
           </div>
         </div>
       </div>
