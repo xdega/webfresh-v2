@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormButton = ({ type }) => {
+const FormButton = ({ type, loading }) => {
   const css = [
     "uppercase",
     "font-bold",
@@ -13,10 +13,11 @@ const FormButton = ({ type }) => {
     "p-1",
     "mt-2",
   ];
-
+  const buttonText = loading ? "Sending..." : "Send";
+  const disabled = loading ? "disabled" : "";
   return (
-    <button className={css.join(" ")} type={type}>
-      Send
+    <button className={css.join(" ")} type={type} disabled={disabled}>
+      {buttonText}
     </button>
   );
 };

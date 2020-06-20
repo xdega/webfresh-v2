@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PageHeading from "../components/PageHeading";
 import FormButton from "../components/FormButton";
+import api from "../api/contact";
 
 const Contact = () => {
   return (
@@ -22,14 +23,28 @@ const ContactForm = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setLoading(true);
     console.log("submitting form...");
-    console.log(`Email Address: ${email}`);
-    console.log(`Subject: ${subject}`);
-    console.log(`Message: ${message}`);
-    // Email API request here
+    const params = {
+      title: subject,
+      message: message,
+      sender: email,
+    };
+    api
+      .send(params)
+      .then(() => {
+        window.alert("Your message was sent.\nThank You");
+      })
+      .finally(() => {
+        setEmail("");
+        setSubject("");
+        setMessage("");
+        setLoading(false);
+      });
   };
 
   return (
@@ -57,7 +72,7 @@ const ContactForm = () => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <FormButton type="submit" />
+      <FormButton type="submit" loading={loading} />
     </form>
   );
 };
