@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import parse from "html-react-parser";
 import api from "../api/portfolio";
 import Loader from "../components/Loader";
+import Icon from "../components/Icon";
+import PageHeading from "../components/PageHeading";
+import SectionHeading from "../components/SectionHeading";
+import ResponsiveThumbnail from "../components/ResponsiveThumbnail";
 
 const Portfolio = () => {
   const [items, setItems] = useState([]);
@@ -56,9 +60,7 @@ const Portfolio = () => {
   } else {
     return (
       <main className="flex-grow mt-2 --fade-in">
-        <h2 className="sm:hidden text-dark-gray uppercase text-2xl font-header">
-          Portfolio
-        </h2>
+        <PageHeading content="Portfolio" />
         {PortfolioItems}
       </main>
     );
@@ -68,27 +70,16 @@ const Portfolio = () => {
 const PortfolioItem = (props) => {
   return (
     <article className="flex mt-2">
-      <a href={props.projectUrl} className="flex-shrink-0" target="_blank">
-        <img
-          className="sm:hidden"
-          src={props.thumbnail}
-          alt="Portfolio Screenshot"
-          width="75"
-          height="75"
-        />
-        <img
-          className="hidden sm:inline-block"
-          src={props.thumbnail}
-          alt="Portfolio Screenshot"
-          width="150"
-          height="150"
-        />
-      </a>
+      <ResponsiveThumbnail
+        url={props.projectUrl}
+        img={props.thumbnail}
+        alt="Portfolio Thumbnail"
+      />
       <div className="flex-auto ml-1 px-0">
-        <div className="uppercase text-white bg-dark-gray p-1 flex justify-between px-2">
+        <SectionHeading>
           <span className="font-bold">{props.title}</span>
           <span>{props.techIcons}</span>
-        </div>
+        </SectionHeading>
         <div className="flex justify-between flex-col px-2">
           <div className="leading-tight mt-1">{props.summary}</div>
           <div className="hidden sm:flex overflow-hidden mt-2">
@@ -98,11 +89,6 @@ const PortfolioItem = (props) => {
       </div>
     </article>
   );
-};
-
-// To be factored out into /components
-const Icon = ({ iconString }) => {
-  return <i className={`${iconString} self-center ml-2`}></i>;
 };
 
 export default Portfolio;
