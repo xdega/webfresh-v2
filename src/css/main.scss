@@ -7,6 +7,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap");
 
 // Custom CSS
+ .resume ul {
+  list-style: square;
+  line-height: 1.5em;
+  padding: 0 0 0 2em;
+  margin: inherit;
+}
+
 .font-header {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 900;

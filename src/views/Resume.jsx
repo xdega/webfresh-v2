@@ -47,7 +47,7 @@ const ResumeItem = ({ title, body }) => {
         <SectionHeading>
           <span className="font-bold">{title}</span>
         </SectionHeading>
-        <div className="leading-tight mt-1 px-2">{parse(body)}</div>
+        <div className="resume leading-tight mt-1 px-2">{parse(body)}</div>
       </div>
     </Card>
   );
