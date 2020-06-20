@@ -20,13 +20,15 @@ const routes = [
 
 export default function App() {
   const element = useRoutes(routes);
+  let year = new Date();
+  year = year.getFullYear();
 
   return (
     <div className="p-2 flex flex-col min-h-screen">
       <Header title="Webfresh" tagline="Web Development" />
       <Navbar />
       {element}
-      <Footer content="Made with &hearts; by Liam Hockley" />
+      <Footer content={`Liam Hockley, ${year} | Los Angeles, CA`} />
     </div>
   );
 }
