@@ -3,6 +3,8 @@ import moment from "moment";
 import parse from "html-react-parser";
 import api from "../api/article";
 import Loader from "../components/Loader";
+import PageHeading from "../components/PageHeading";
+import SectionHeading from "../components/SectionHeading";
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
@@ -33,9 +35,7 @@ const Blog = () => {
   } else {
     return (
       <main className="flex-grow mt-2 --fade-in">
-        <h2 className="sm:hidden text-dark-gray uppercase text-2xl font-header">
-          Blog
-        </h2>
+        <PageHeading content="Blog" />
         {blogItems}
       </main>
     );
@@ -46,10 +46,10 @@ const BlogItem = ({ title, body, date }) => {
   return (
     <article className="flex mt-2 mb-5">
       <div className="flex-auto">
-        <div className="uppercase text-white bg-dark-gray py-1 px-2 flex justify-between flex-col sm:flex-row">
+        <SectionHeading>
           <span className="font-bold">{title}</span>
-          <span>{date}</span>
-        </div>
+          <span className="italic">{date}</span>
+        </SectionHeading>
         <div className="leading-tight mt-1 px-2">{parse(body)}</div>
       </div>
     </article>
