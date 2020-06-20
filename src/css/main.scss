@@ -7,11 +7,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap");
 
 // Custom CSS
- .resume ul {
+.resume ul {
   list-style: square;
   line-height: 1.5em;
   padding: 0 0 0 2em;
   margin: inherit;
+}
+
+.portfolio {
+  p:first-of-type {
+    margin-top: 0px !important;
+  }
+  p:not(:first-of-type) {
+    margin-top: 1rem;
+  }
 }
 
 .font-header {

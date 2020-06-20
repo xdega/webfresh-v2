@@ -82,9 +82,9 @@ const PortfolioItem = (props) => {
           <span>{props.techIcons}</span>
         </SectionHeading>
         <div className="flex justify-between flex-col px-2">
-          <div className="leading-tight mt-1">{props.summary}</div>
+          <div className="sm:hidden leading-tight mt-1">{props.summary}</div>
           <div className="hidden sm:flex overflow-hidden mt-2">
-            <span className="leading-tight">{parse(props.body)}</span>
+            <span className="portfolio leading-tight">{parse(props.body)}</span>
           </div>
         </div>
       </div>
