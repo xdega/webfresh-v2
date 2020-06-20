@@ -6,6 +6,7 @@ import Icon from "../components/Icon";
 import PageHeading from "../components/PageHeading";
 import SectionHeading from "../components/SectionHeading";
 import ResponsiveThumbnail from "../components/ResponsiveThumbnail";
+import Card from "../components/card";
 
 const Portfolio = () => {
   const [items, setItems] = useState([]);
@@ -47,8 +48,8 @@ const Portfolio = () => {
       thumbnail: thumbnailUrl,
     };
 
-    const techIcons = item.attributes.field_tech_icons.map((item) => {
-      return <Icon iconString={item} />;
+    const techIcons = item.attributes.field_tech_icons.map((item, index) => {
+      return <Icon iconString={item} key={index} />;
     });
 
     props.techIcons = techIcons;
@@ -69,7 +70,7 @@ const Portfolio = () => {
 
 const PortfolioItem = (props) => {
   return (
-    <article className="flex mt-2">
+    <Card>
       <ResponsiveThumbnail
         url={props.projectUrl}
         img={props.thumbnail}
@@ -87,7 +88,7 @@ const PortfolioItem = (props) => {
           </div>
         </div>
       </div>
-    </article>
+    </Card>
   );
 };
 

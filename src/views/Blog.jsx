@@ -5,6 +5,7 @@ import api from "../api/article";
 import Loader from "../components/Loader";
 import PageHeading from "../components/PageHeading";
 import SectionHeading from "../components/SectionHeading";
+import Card from "../components/card";
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
@@ -44,7 +45,7 @@ const Blog = () => {
 
 const BlogItem = ({ title, body, date }) => {
   return (
-    <article className="flex mt-2 mb-5">
+    <Card>
       <div className="flex-auto">
         <SectionHeading>
           <span className="font-bold">{title}</span>
@@ -52,7 +53,7 @@ const BlogItem = ({ title, body, date }) => {
         </SectionHeading>
         <div className="leading-tight mt-1 px-2">{parse(body)}</div>
       </div>
-    </article>
+    </Card>
   );
 };
 
