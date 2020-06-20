@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PageHeading from "../components/PageHeading";
+import FormButton from "../components/FormButton";
 
 const Contact = () => {
   return (
@@ -56,31 +57,8 @@ const ContactForm = () => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <FormSubmitButton />
+      <FormButton type="submit" />
     </form>
-  );
-};
-
-// Refactor Form controls to /components
-
-const FormSubmitButton = () => {
-  const css = [
-    "uppercase",
-    "font-bold",
-    "transition-colors",
-    "duration-500",
-    "ease-in-out",
-    "hover:bg-dark-lime",
-    "bg-light-lime",
-    "text-white",
-    "p-1",
-    "mt-2",
-  ];
-
-  return (
-    <button className={css.join(" ")} type="submit">
-      Send
-    </button>
   );
 };
 
