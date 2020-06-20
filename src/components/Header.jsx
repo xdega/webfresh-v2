@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Header = ({ title, tagline }) => {
   return (
     <header className="flex --fade-in">
-      <Link to="blog">
-        <div className="p-3 py-1 bg-dark-lime text-center w-full xs:max-w-xs">
+      <Link className="w-full xs:max-w-xs" to="blog">
+        <div className="p-3 py-1 bg-dark-lime text-center">
           <h1 className="text-5xl font-bold uppercase text-white leading-none font-header">
             {title}
           </h1>
