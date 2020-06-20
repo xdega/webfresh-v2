@@ -1,5 +1,5 @@
 import React from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, Redirect } from "react-router-dom";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -11,6 +11,7 @@ import Resume from "./Resume";
 import Contact from "./Contact";
 
 const routes = [
+  { path: "/", element: <Blog /> },
   { path: "/blog", element: <Blog /> },
   { path: "/portfolio", element: <Portfolio /> },
   { path: "/resume", element: <Resume /> },

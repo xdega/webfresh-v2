@@ -57,8 +57,9 @@ const Navbar = () => {
 const InternalNavItem = ({ to, iconString, name }) => {
   const location = useLocation();
   const resolvedLocation = useResolvedLocation(to);
+  const defaultLocation = location.pathname === "/" && name === "blog";
   const backgroundClass =
-    location.pathname === resolvedLocation.pathname
+    defaultLocation || location.pathname === resolvedLocation.pathname
       ? "bg-dark-lime"
       : "bg-light-lime";
 
