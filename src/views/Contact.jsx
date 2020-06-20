@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHeading from "../components/PageHeading";
 
 const Contact = () => {
@@ -18,47 +18,50 @@ const Contact = () => {
 };
 
 const ContactForm = () => {
-  // form handler
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("submitting form...");
     console.log(`Email Address: ${email}`);
+    console.log(`Subject: ${subject}`);
+    console.log(`Message: ${message}`);
+    // Email API request here
   };
 
   return (
     <form
-      className="flex flex-col mt-2 max-w-lg mx-auto md:mx-0 w-full lg:w-1/2"
+      className="flex flex-col max-w-lg mx-auto md:mx-0 w-full lg:w-1/2"
       onSubmit={handleSubmit}
     >
-      <FormInputText type="email" placeholder="Your Email Address" />
-      <FormInputText type="text" placeholder="Your Name" />
-      <FormInputText type="text" placeholder="Subject" />
-      <FormTextArea />
+      <input
+        className="border border-gray-500 p-1 mt-2"
+        type="email"
+        placeholder="Your Email Address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        className="border border-gray-500 p-1 mt-2"
+        type="text"
+        placeholder="Subject"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
+      />
+      <textarea
+        rows="12"
+        className="border border-gray-500 p-1 mt-2"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
       <FormSubmitButton />
     </form>
   );
 };
 
 // Refactor Form controls to /components
-const FormInputText = ({ placeholder, type }) => {
-  return (
-    <input
-      className="border border-gray-500 p-1 mt-2"
-      type={type}
-      placeholder={placeholder}
-    />
-  );
-};
-
-const FormTextArea = () => {
-  return (
-    <textarea
-      className="border border-gray-500 p-1 mt-2"
-      cols="30"
-      rows="10"
-    ></textarea>
-  );
-};
 
 const FormSubmitButton = () => {
   const css = [
