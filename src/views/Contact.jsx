@@ -5,12 +5,12 @@ import api from "../api/contact";
 
 const Contact = () => {
   return (
-    <main className="flex-grow">
+    <main className="flex-grow --fade-in">
       <PageHeading content="Contact" />
-      <div className="flex">
+      <div className="flex md:justify-center">
         <ContactForm />
         <img
-          className="hidden lg:flex w-1/2 mt-2 ml-3 opacity-50 --fade-in"
+          className="hidden md:flex w-1/2 mt-2 ml-3 opacity-50 --fade-in"
           style={{ maxHeight: "440px", maxWidth: "650px" }}
           src="https://images.unsplash.com/photo-1579486599242-f123e7d77288?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
         />
@@ -49,7 +49,7 @@ const ContactForm = () => {
 
   return (
     <form
-      className="flex flex-col max-w-lg mx-auto md:mx-0 w-full lg:w-1/2"
+      className="flex flex-col max-w-lg mx-auto md:mx-0 w-full md:w-1/2"
       onSubmit={handleSubmit}
     >
       <input
