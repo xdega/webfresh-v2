@@ -58,6 +58,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      favicon: "./favicon.png",
     }),
     new MiniCssExtractPlugin({
       filename: "style.css",
