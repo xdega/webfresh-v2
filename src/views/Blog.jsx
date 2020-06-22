@@ -29,7 +29,15 @@ const Blog = () => {
     let date = new Date(item.attributes.created);
     date = moment(date).format("DD MMMM YYYY");
 
-    return <BlogItem title={title} body={body} date={date} key={item.id} />;
+    return (
+      <BlogItem
+        title={title}
+        body={body}
+        date={date}
+        id={item.id}
+        key={item.id}
+      />
+    );
   });
   if (loading) {
     return <Loader />;
@@ -43,10 +51,10 @@ const Blog = () => {
   }
 };
 
-const BlogItem = ({ title, body, date }) => {
+const BlogItem = ({ title, body, date, id }) => {
   return (
     <Card>
-      <div className="flex-auto">
+      <div className="flex-auto" id={id}>
         <SectionHeading>
           <span className="font-bold">{title}</span>
           <span className="italic">{date}</span>
