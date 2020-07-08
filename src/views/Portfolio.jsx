@@ -6,7 +6,7 @@ import Icon from "../components/Icon";
 import PageHeading from "../components/PageHeading";
 import SectionHeading from "../components/SectionHeading";
 import ResponsiveThumbnail from "../components/ResponsiveThumbnail";
-import Card from "../components/card";
+import Card from "../components/Card";
 
 const Portfolio = () => {
   const [items, setItems] = useState([]);

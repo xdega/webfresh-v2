@@ -5,7 +5,7 @@ import api from "../api/article";
 import Loader from "../components/Loader";
 import PageHeading from "../components/PageHeading";
 import SectionHeading from "../components/SectionHeading";
-import Card from "../components/card";
+import Card from "../components/Card";
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
