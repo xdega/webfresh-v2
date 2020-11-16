@@ -1,4 +1,4 @@
-# Webfreshdev
+# Webfresh V2 (Personal Portfolio)
 
 This is a React frontend, built on top of a Drupal JSON:API-powered backend. 
 
