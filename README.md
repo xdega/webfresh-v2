@@ -1,6 +1,8 @@
 # Webfreshdev
 
-This is a React frontend, built on top of a Drupal JSON:API-powered backend. It is deployed to Firebase, and hosted at https://wwww.webfreshdev.com
+This is a React frontend, built on top of a Drupal JSON:API-powered backend. 
+
+It is deployed to Firebase, and hosted at: https://wwww.webfreshdev.com
 
 ## Install Dependencies
 
