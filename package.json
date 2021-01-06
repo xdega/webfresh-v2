@@ -6,7 +6,7 @@
     "build": "./node_modules/.bin/webpack --mode production"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "html-react-parser": "^0.13.0",
     "moment": "^2.26.0",
     "react": "^16.13.1",
